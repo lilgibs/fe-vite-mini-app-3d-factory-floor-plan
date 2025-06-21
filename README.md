@@ -33,9 +33,9 @@ This is a **mini interactive 3D application** that visualizes a factory floor la
 
 You can navigate the 3D scene using your mouse:
 
-- **Left Click + Drag** – Rotate the camera around the scene
-- **Right Click + Drag** – Pan or move the camera view
-- **Scroll Wheel / Middle Mouse** – Zoom in and out
+- **Hold Left Click + Drag** – Rotate the camera around the scene
+- **Hold Right Click + Drag** – Pan or move the camera view
+- **Scroll Wheel / Hold Middle Mouse + Drag** – Zoom in and out
 
 ---
 
@@ -78,7 +78,6 @@ You can try the deployed version of this app here:
 🌐 [View deployed app](https://fe-vite-mini-app-3d-factory-floor-p.vercel.app/)
 
 ---
-
 
 ## 🚀 Getting Started
 
