@@ -101,9 +101,9 @@ export default function CanvasArea({ model }: { model: ReturnType<typeof useFloo
       <div className='hidden absolute md:flex flex-col gap-4 bottom-4 left-4 text-sm'>
         <p>Mouse Controls</p>
         <div>
-          <p>Left - Rotate</p>
-          <p>Right - Move</p>
-          <p>Middle - Zoom</p>
+          <p>Left Click + Drag (Hold) - Rotate</p>
+          <p>Right Click + Drag (Hold) - Move</p>
+          <p>Middle Mouse Scroll / Hold + Drag - Zoom</p>
         </div>
       </div>
     </>
