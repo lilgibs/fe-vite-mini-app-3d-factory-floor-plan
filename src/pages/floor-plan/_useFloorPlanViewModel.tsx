@@ -34,17 +34,11 @@ export default function useFloorPlanViewModel() {
     setIsExpanded(prev => !prev);
   };
 
-
   function focusCameraTo(target: [number, number, number]) {
     const controls = canvasControlsRef.current;
     if (controls) {
-      controls.target.set(...target); // Arahkan fokus
-      controls.object.position.set(
-        target[0] + 5,
-        target[1] + 5,
-        target[2] + 5
-      );
-      controls.update(); // Perbarui tampilan
+      controls.target.set(target[0], target[1] + 2, target[2]); // Arahkan fokus
+      controls.update()
     }
   }
 
