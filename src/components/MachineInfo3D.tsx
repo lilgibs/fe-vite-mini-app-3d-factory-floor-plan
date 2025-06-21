@@ -34,46 +34,46 @@ export default function MachineInfo3D({ data }: { data: IMachineProps }) {
   }, []);
 
   return (
-    <div className={`p-2 md:p-4 flex flex-col gap-1 md:gap-4 w-[280px] md:w-[500px] bg-black/75 rounded-md md:rounded-lg scale-0 ${isOpened ? 'scale-100' : ''} transition-all duration-300 ease-in-out`}>
+    <div className={`p-2 md:p-4 flex flex-col gap-1 md:gap-4 w-[300px] md:w-[500px] bg-black/75 rounded-md md:rounded-lg scale-0 ${isOpened ? 'scale-100' : ''} transition-all duration-300 ease-in-out`}>
       <p className='text-xs md:text-base text-white font-semibold'>{data.name}</p>
       <div className='w-full grid grid-cols-4 gap-1 md:gap-2'>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Cycle Time</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.cycleTime}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Cycle Time</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.cycleTime}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>OEE</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.oee}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>OEE</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.oee}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>First Time Yield</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.firstTimeYield}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>First Time Yield</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.firstTimeYield}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Scrap</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.scrap}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Scrap</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.scrap}</div>
         </div>
       </div>
       {onDetails && <div className={'grid grid-cols-4 gap-1 md:gap-2'}>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Downtime</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.downtime}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Downtime</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.downtime}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Changeover Time</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.changeover}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Changeover Time</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.changeover}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Energy Consumption</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.energy}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Energy Consumption</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{dummyRealtimeData.energy}</div>
         </div>
         <div className='rounded-md md:rounded-lg overflow-hidden text-center'>
-          <div className='text-[8px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Status</div>
-          <div className='text-[8px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.status}</div>
+          <div className='text-[10px] md:text-xs bg-black text-white px-2 md:px-4 py-1 md:py-2 truncate'>Status</div>
+          <div className='text-[10px] md:text-base font-semibold bg-neutral-700 text-white py-1 md:py-2'>{data.status}</div>
         </div>
       </div>}
       <div
-        className='flex items-center justify-center font-semibold text-white text-[8px] md:text-sm underline cursor-pointer'
+        className='flex items-center justify-center font-semibold text-white text-[10px] md:text-sm underline cursor-pointer'
         onClick={() => setOnDetails(!onDetails)}
       >
         {onDetails ? 'Hide Details' : 'Show Details'}

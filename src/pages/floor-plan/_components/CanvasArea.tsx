@@ -98,12 +98,20 @@ export default function CanvasArea({ model }: { model: ReturnType<typeof useFloo
           </button>
         </div>
       </div>
-      <div className='hidden absolute md:flex flex-col gap-4 bottom-4 left-4 text-sm'>
+      <div className='hidden absolute md:flex flex-col gap-4 bottom-4 left-4 text-sm italic'>
         <p>Mouse Controls</p>
         <div>
           <p>Left Click + Drag (Hold) - Rotate</p>
           <p>Right Click + Drag (Hold) - Move</p>
           <p>Middle Mouse Scroll / Hold + Drag - Zoom</p>
+        </div>
+      </div>
+      <div className='absolute flex flex-col gap-2 md:hidden bottom-4 left-4 text-[10px] italic'>
+        <p>Mobile Touch Controls</p>
+        <div>
+          <p>Drag with one finger - Rotate</p>
+          <p>Drag with two fingers - Move</p>
+          <p>Pinch - Zoom</p>
         </div>
       </div>
     </>
