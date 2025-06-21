@@ -72,6 +72,14 @@ src/
 
 ---
 
+## 🔗 Live Demo
+
+You can try the deployed version of this app here:  
+🌐 [View deployed app](https://fe-vite-mini-app-3d-factory-floor-p.vercel.app/)
+
+---
+
+
 ## 🚀 Getting Started
 
 1. **Clone or download** this repository to your local machine.
