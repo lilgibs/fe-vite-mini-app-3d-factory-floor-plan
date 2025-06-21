@@ -47,6 +47,7 @@ export default function CanvasArea({ model }: { model: ReturnType<typeof useFloo
                   <Tooltip3D
                     key={`tooltip-${val.name}`}
                     position={val.position}
+                    setActiveTooltip={model.setActiveTooltip}
                   >
                     <MachineInfo3D data={val} />
                   </Tooltip3D>
