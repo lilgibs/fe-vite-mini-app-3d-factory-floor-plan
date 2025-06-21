@@ -39,6 +39,16 @@ You can navigate the 3D scene using your mouse:
 
 ---
 
+## ↕️ Mobile Controls (Touch UI)
+
+You can navigate the 3D scene using touch gestures:
+
+- **One finger drag** – Rotate the camera around the scene
+- **Two finger drag** – Pan or move the camera view
+- **Pinch to zoom** – Zoom in and out
+
+---
+
 ## 📦 Folder Structure
 
 ```bash
