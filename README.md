@@ -31,6 +31,7 @@ This is a **mini interactive 3D application** that visualizes a factory floor la
 
 ## 📦 Folder Structure
 
+```bash
 src/
 ├── assets/
 │ ├── jpg/
@@ -49,6 +50,7 @@ src/
 │ │ └── _useFloorPlanViewModel.tsx
 ├── data/
 │ └── machines.ts
+```
 
 ---
 
