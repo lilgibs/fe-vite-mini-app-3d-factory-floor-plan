@@ -1,54 +1,93 @@
-# React + TypeScript + Vite
+# 🏭 Mini App 3D Factory Floor Plan — Frontend with Vite + React Three Fiber + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **mini interactive 3D application** that visualizes a factory floor layout with clickable machine tags. Built with **Vite**, **React**, **TypeScript**, **React Three Fiber**, and **Tailwind CSS**, the app allows users to explore a 3D scene, interact with machine markers, and view simulated real-time data.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Vite** – Fast bundler for modern frontend development
+- **React** – UI library for building interactive components
+- **TypeScript** – Type-safe JavaScript
+- **React Three Fiber** – React renderer for Three.js
+- **Three.js** – 3D graphics library
+- **@react-three/drei** – Helpers for R3F (GLTF loader, controls, HTML overlay)
+- **Tailwind CSS** – Utility-first CSS framework
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ✨ Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🧭 3D interactive factory floor using `.glb` model
+- 🏷️ Clickable machine tags with simulated performance data
+- 🪟 Tooltip/info panel that follows camera and adapts position
+- 🔄 Expandable data panel with metrics (Cycle Time, OEE, Downtime, etc.)
+- 🎮 3D controls: rotate, zoom, pan (OrbitControls)
+- 📱 Responsive overlay and layout
+- 🌀 Real-time data simulation with `setInterval`
+- 💡 Modular component structure (`FactoryModel`, `Tooltip3D`, etc.)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📦 Folder Structure
+
+src/
+├── assets/
+│ ├── jpg/
+│ │ └── hero_image.jpg
+│ └── png/
+│   └── hero_image.jpg
+├── components/
+│ ├── Button3D.tsx
+│ ├── FactoryModel.tsx
+│ ├── MachineInfo3D.tsx
+│ └── Tooltip3D.tsx
+├── pages/
+│ ├── index.tsx
+│ ├── floor-plan/
+│ │ ├── FloorPlanView.tsx
+│ │ └── _useFloorPlanViewModel.tsx
+├── data/
+│ └── machines.ts
+
+---
+
+## 🖼️ Screenshot
+
+![Factory Floor Plan](./src/assets/png/SS_1.PNG)
+
+![Machine Information](./src/assets/png/SS_2.PNG)
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone or download** this repository to your local machine.
+2. Open a terminal and navigate to the project folder.
+3. **Install dependencies** with:
+
+    ```sh
+    npm install
+    ```
+
+4. **Run the development server**:
+
+    ```sh
+    npm run dev
+    ```
+
+5. Open your browser and navigate to:
+
+    ```sh
+    http://localhost:5173
+    ```
+
+---
+
+## 📝 Notes
+
+- The 3D model is loaded from `/public/factory_asset.glb`
+- Tags and tooltips are positioned manually using 3D coordinates `[x, y, z]`
+- You can adjust tag data in `/src/data/machines.ts`
+
+---
