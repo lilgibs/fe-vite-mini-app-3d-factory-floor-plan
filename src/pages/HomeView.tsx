@@ -8,7 +8,7 @@ export default function HomeView() {
   const model = useHomeViewModel()
   return (
     <div className="flex">
-      <Sidebar isOpen={model.isOpen} />
+      <Sidebar isOpen={model.isOpen} setIsOpen={model.setIsOpen}/>
       <div className={"flex-1 min-h-screen flex flex-col "}>
         <Navbar isOpen={model.isOpen} setIsOpen={model.setIsOpen} />
         <div className="p-4 md:p-6">

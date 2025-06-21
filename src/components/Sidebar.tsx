@@ -3,9 +3,7 @@ import { LandPlot } from 'lucide-react'
 import logo from '../assets/png/logo.png'
 import useGlobalHooks from '../hooks/_useGlobalHooks'
 
-export default function Sidebar({ isOpen,
-
-}: { isOpen: boolean }) {
+export default function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
   const globalHooks = useGlobalHooks()
   return (
     <div className={`z-50 absolute md:sticky left-0 top-0 ${isOpen ? ' w-full md:w-[300px]' : 'hidden md:block w-full md:w-[72px]'} shadow md:shadow-none md:h-screen md:flex flex-col transition-all duration-300 ease-in-out`}>
@@ -23,13 +21,16 @@ export default function Sidebar({ isOpen,
         <div className='flex flex-col gap-4'>
           <button
             className={`p-2 flex gap-4 hover:bg-blue-50 ${window.location.pathname === '/floor-plan' ? 'bg-blue-50' : ''} rounded-md cursor-pointer`}
-            onClick={() => globalHooks.navigate('/floor-plan')}
+            onClick={() => {
+              globalHooks.navigate('/floor-plan')
+              window.innerWidth <= 768 && setIsOpen(false)
+            }}
           >
             <LandPlot />
             <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>Floor Plan</span>
           </button>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
