@@ -13,7 +13,7 @@ export default function Button3D({ name, position, setActiveTooltip, onFocusCame
       occlude
       zIndexRange={[0, 100]}
     >
-      <div className='h-[32px] md:h-[42px] w-[80px] md:w-[100px] flex items-center justify-center bg-neutral-900 text-xs md:text-base text-white shadow rounded-md'>{name}</div>
+      <div className='h-[28px] md:h-[42px] w-[70px] md:w-[100px] flex items-center justify-center bg-neutral-900 text-[10px] md:text-base text-white shadow rounded-md'>{name}</div>
       <button
         onClick={(e) => {
           e.stopPropagation();

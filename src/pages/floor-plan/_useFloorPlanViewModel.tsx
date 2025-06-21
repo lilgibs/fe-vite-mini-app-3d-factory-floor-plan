@@ -5,8 +5,9 @@ import { machines } from '../../data/machines';
 export default function useFloorPlanViewModel() {
   const [data, _setData] = useState<IMachineProps[]>(machines)
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [onReset, setOnReset] = useState<boolean>(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Ref
   const canvasControlsRef = useRef<any>(null)
@@ -27,6 +28,12 @@ export default function useFloorPlanViewModel() {
       document.exitFullscreen();
     }
   };
+
+
+  const handleToggleExpandMobile = () => {
+    setIsExpanded(prev => !prev);
+  };
+
 
   function focusCameraTo(target: [number, number, number]) {
     const controls = canvasControlsRef.current;
@@ -72,6 +79,16 @@ export default function useFloorPlanViewModel() {
     };
   }, []);
 
+  useEffect(() => {
+    setOnReset(true);
+
+    const timeoutId = setTimeout(() => {
+      setOnReset(false);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [isExpanded]);
+
   return {
     fullScreenRef,
     canvasControlsRef,
@@ -83,5 +100,7 @@ export default function useFloorPlanViewModel() {
     data,
     activeTooltip, setActiveTooltip,
     focusCameraTo,
+    isExpanded, setIsExpanded,
+    handleToggleExpandMobile
   }
 }
