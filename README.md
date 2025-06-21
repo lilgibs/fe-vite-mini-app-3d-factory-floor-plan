@@ -29,6 +29,16 @@ This is a **mini interactive 3D application** that visualizes a factory floor la
 
 ---
 
+## 🖱️ Mouse Controls
+
+You can navigate the 3D scene using your mouse:
+
+- **Left Click + Drag** – Rotate the camera around the scene
+- **Right Click + Drag** – Pan or move the camera view
+- **Scroll Wheel / Middle Mouse** – Zoom in and out
+
+---
+
 ## 📦 Folder Structure
 
 ```bash
