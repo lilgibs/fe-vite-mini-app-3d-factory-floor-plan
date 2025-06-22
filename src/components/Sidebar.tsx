@@ -4,53 +4,56 @@ import logo from '../assets/png/logo.png'
 import useGlobalHooks from '../hooks/_useGlobalHooks'
 import { useEffect, useRef } from 'react';
 
-export default function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
+interface IProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menuButtonRef: React.RefObject<HTMLButtonElement | null>;
+}
+
+export default function Sidebar({ isOpen, setIsOpen, menuButtonRef }: IProps) {
   const globalHooks = useGlobalHooks()
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
+      const clickedTarget = event.target as Node
+      const clickedOutsideSidebar = containerRef.current && !containerRef.current.contains(clickedTarget)
+      const clickedOutsideNavbarButton = menuButtonRef.current && !menuButtonRef.current.contains(clickedTarget)
+
+      if (window.innerWidth <= 1024 && clickedOutsideSidebar && clickedOutsideNavbarButton) {
+        setIsOpen(false)
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [menuButtonRef])
 
   return (
     <div
-      className={`z-999 fixed md:sticky left-0 top-[72px] md:top-0 ${isOpen ? ' w-full md:w-[300px]' : 'hidden md:block w-full md:w-[72px]'} shadow md:shadow-none md:h-screen md:flex flex-col transition-all duration-300 ease-in-out`}
+      className={`z-999 fixed lg:sticky left-0 top-[72px] lg:top-0 ${isOpen ? ' w-full lg:w-[300px]' : 'hidden lg:block w-full lg:w-[72px]'} shadow lg:shadow-none lg:h-screen lg:flex flex-col transition-all duration-300 ease-in-out`}
       ref={containerRef}
     >
-      <div className='h-[72px] flex items-center justify-center gap-2 bg-white shadow-md border-b border-gray-300'>
-        <button
-          onClick={() => globalHooks.navigate('/')}
-          className='cursor-pointer'
-        >
-          <img
-            src={logo}
-            alt="LIL GIBRAN Logo"
-            width={42}
-            height={42}
-          />
-        </button>
+      <div
+        onClick={() => globalHooks.navigate('/')}
+        className='h-[72px] flex items-center justify-center gap-2 bg-white shadow-md border-b border-gray-300 cursor-pointer'
+      >
+        <img
+          src={logo}
+          alt="LIL GIBRAN Logo"
+          width={42}
+          height={42}
+        />
         <p className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden font-bold text-2xl`}>GONSTERS</p>
       </div>
-      <div className={`-z-10 flex-1 ${isOpen ? 'p-4' : 'py-4 px-2 md:items-center'} flex flex-col gap-4 bg-white font-semibold transition-all duration-300 ease-in-out`}>
+      <div className={`-z-10 flex-1 ${isOpen ? 'p-4' : 'py-4 px-2 lg:items-center'} flex flex-col gap-4 bg-white font-semibold transition-all duration-300 ease-in-out`}>
         <p>Menu</p>
         <div className='flex flex-col gap-4'>
           <button
             className={`p-2 flex gap-4 hover:bg-blue-50 ${window.location.pathname === '/floor-plan' ? 'bg-blue-50' : ''} rounded-md cursor-pointer`}
             onClick={() => {
               globalHooks.navigate('/floor-plan')
-              window.innerWidth <= 768 && setIsOpen(false)
+              window.innerWidth <= 1024 && setIsOpen(false)
             }}
           >
             <LandPlot />
