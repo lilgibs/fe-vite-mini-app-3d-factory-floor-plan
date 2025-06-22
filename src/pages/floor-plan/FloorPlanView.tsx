@@ -19,9 +19,9 @@ export default function FloorPlanView() {
       </div>
       <hr />
       <div className='p-2 md:p-4 flex-1 grid grid-cols-1 border border-gray-300 rounded-lg'>
-        <div className='relative' ref={model.fullScreenRef} id="CanvasWrapper">
+        {!model.isExpanded && <div className='relative' ref={model.fullScreenRef} id="CanvasWrapper">
           <CanvasArea model={model} />
-        </div>
+        </div>}
         {/* Modal fullscreen */}
         {model.isExpanded && (
           <div className='fixed inset-0 bg-white z-[9999]'>
