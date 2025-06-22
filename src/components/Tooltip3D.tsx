@@ -16,7 +16,7 @@ export default function Tooltip3D({ position, setActiveTooltip, children }: IPro
         containerRef.current &&
         !containerRef.current.contains(event.target as Node)
       ) {
-        setActiveTooltip(null);
+        setTimeout(() => setActiveTooltip(null), 300);
       }
     }
 
