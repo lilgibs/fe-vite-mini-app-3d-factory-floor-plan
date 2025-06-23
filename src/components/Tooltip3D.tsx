@@ -1,5 +1,5 @@
 import { Html } from '@react-three/drei'
-import React, { useEffect, useRef, useState, type RefObject } from 'react'
+import React, { useEffect, useRef, type RefObject } from 'react'
 
 interface IProps {
   name: string
@@ -9,7 +9,7 @@ interface IProps {
   anchorRef: RefObject<HTMLDivElement | null>
 }
 
-export default function Tooltip3D({ name, position, setActiveTooltip, children, anchorRef }: IProps) {
+export default function Tooltip3D({ position, setActiveTooltip, children, anchorRef }: IProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
