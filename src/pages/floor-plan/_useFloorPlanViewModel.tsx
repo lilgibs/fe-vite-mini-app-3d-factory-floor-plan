@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { createRef, useEffect, useRef, useState, type RefObject } from 'react'
 import type { IMachineProps } from '../../domain/models/machine';
 import { machines } from '../../data/machines';
 
@@ -12,6 +12,7 @@ export default function useFloorPlanViewModel() {
   // Ref
   const canvasControlsRef = useRef<any>(null)
   const fullScreenRef = useRef<HTMLDivElement>(null);
+  const button3dRefs = useRef<{ [key: string]: RefObject<HTMLDivElement | null> }>({})
 
   // Function
   const handleToggleFullscreen = () => {
@@ -58,6 +59,14 @@ export default function useFloorPlanViewModel() {
 
   // Hooks
   useEffect(() => {
+    data.forEach((val) => {
+      if (!button3dRefs.current[val.name]) {
+        button3dRefs.current[val.name] = createRef<HTMLDivElement>()
+      }
+    })
+  }, [data])
+
+  useEffect(() => {
     function handleFullScreenChange() {
       setOnReset(true);
 
@@ -96,6 +105,7 @@ export default function useFloorPlanViewModel() {
   }, [isExpanded]);
 
   return {
+    button3dRefs,
     fullScreenRef,
     canvasControlsRef,
     onReset,

@@ -33,10 +33,12 @@ export default function CanvasArea({ model }: { model: ReturnType<typeof useFloo
             {/* Render tombol 3D */}
             {model.data.map((val) => (
               <Button3D
+                key={`button-${val.name}`}
                 name={val.name}
                 position={val.position}
                 setActiveTooltip={model.setActiveTooltip}
                 onFocusCamera={model.focusCameraTo}
+                ref={model.button3dRefs.current[val.name]}
               />
             ))}
 
@@ -46,8 +48,10 @@ export default function CanvasArea({ model }: { model: ReturnType<typeof useFloo
                 val.name === model.activeTooltip ? (
                   <Tooltip3D
                     key={`tooltip-${val.name}`}
+                    name={val.name}
                     position={val.position}
                     setActiveTooltip={model.setActiveTooltip}
+                    anchorRef={model.button3dRefs.current[val.name]}
                   >
                     <MachineInfo3D data={val} />
                   </Tooltip3D>
