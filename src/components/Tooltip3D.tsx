@@ -10,29 +10,49 @@ interface IProps {
 }
 
 export default function Tooltip3D({ name, position, setActiveTooltip, children, anchorRef }: IProps) {
-  const [currentTooltip, setCurrentTooltip] = useState<string | null>(name);
-
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (currentTooltip !== name) {
-      setCurrentTooltip(name);
-    }
-    function handleClickOutside(event: MouseEvent) {
-      const clickedTarget = event.target as Node
-      const clickedOutsideTooltip = containerRef.current && !containerRef.current.contains(clickedTarget)
-      const clickedOutsideButton = anchorRef.current && !anchorRef.current.contains(clickedTarget)
+    let startTime = 0
+    let startX = 0
+    let startY = 0
 
-      if (clickedOutsideButton && clickedOutsideTooltip) {
+    function handleMouseDown(event: MouseEvent) {
+      const target = event.target as Node
+      const inTooltip = containerRef.current?.contains(target)
+      const inButton = anchorRef.current?.contains(target)
+
+      if (!inTooltip && !inButton) {
+        startTime = Date.now()
+        startX = event.clientX
+        startY = event.clientY
+      }
+    }
+
+    function handleMouseUp(event: MouseEvent) {
+      const target = event.target as Node
+      const inTooltip = containerRef.current?.contains(target)
+      const inButton = anchorRef.current?.contains(target)
+
+      const timeHeld = Date.now() - startTime
+      const deltaX = Math.abs(event.clientX - startX)
+      const deltaY = Math.abs(event.clientY - startY)
+      const movedTooFar = deltaX > 5 || deltaY > 5
+      const heldTooLong = timeHeld > 300
+
+      if (!inTooltip && !inButton && !movedTooFar && !heldTooLong) {
         setActiveTooltip(null)
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleMouseDown)
+    document.addEventListener('mouseup', handleMouseUp)
+
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [name, currentTooltip]);
+      document.removeEventListener('mousedown', handleMouseDown)
+      document.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [anchorRef, setActiveTooltip])
 
   return (
     <Html
