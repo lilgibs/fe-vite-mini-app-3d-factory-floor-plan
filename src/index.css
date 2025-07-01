@@ -4,9 +4,19 @@
   --background: #f5f5f5;
 }
 
-body {
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: var(--background);
 }
+
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 hr {
   border: none;
